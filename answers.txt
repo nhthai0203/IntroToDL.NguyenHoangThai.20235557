@@ -1,0 +1,16 @@
+- I use those transformations toward train set:
+ Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),  (normalize the images to feed into the model)
+ HorizontalFlip(),
+ VerticalFlip(),
+ RandomBrightnessContrast(), 
+ HueSaturationValue(),
+ Rotate(limit=30, p=0.5), 
+ ToTensorV2() 
+
+- Encoder:
++ I used ResNet-34 as the encoder in my UNet model. 
++ This encoder was pre-trained on the ImageNet dataset, which provides robust feature extraction capabilities. 
++ The encoder processes the input image in a downsampling manner, extracting hierarchical features at different levels.
+- Decoder:
++ The decoder reconstructs the segmentation map from the encoded features. 
++ It uses upsampling layers combined with skip connections from the encoder to ensure fine-grained spatial details are preserved.
